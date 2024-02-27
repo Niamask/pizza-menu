@@ -3,6 +3,64 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 // Challange #1
+
+function App() {
+  return (
+    <div className="card">
+      <Avatar />
+      <div className="data">
+        <Intro />
+        <SkillList />
+      </div>
+    </div>
+  );
+}
+
+function Avatar() {
+  return <img className="avatar" src="avatar-image.jpg" alt="Name avatar" />;
+}
+
+function Intro() {
+  return (
+    <div>
+      <h1>Niama sk</h1>
+      <p>
+        The flex-wrap CSS property sets whether flex items are forced onto one
+        line or can wrap onto multiple lines.
+      </p>
+    </div>
+  );
+}
+
+function SkillList() {
+  return (
+    <div className="skill-list">
+      <Skill skill="React" emoji="👍🏻" color="red" />
+      <Skill skill="Css + HTML" emoji="👍🏻" color="green" />
+      <Skill skill="javaScript" emoji="👍🏻" color="yellow" />
+      <Skill skill="Flask" emoji="👍🏻" color="pink" />
+    </div>
+  );
+}
+
+function Skill(props) {
+  return (
+    <div className="skill" style={{ backgroundColor: props.color }}>
+      <span>{props.skill}</span>
+      <span>{props.emoji}</span>
+    </div>
+  );
+}
+// React v18
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+/*
+// Challange #1
 function App() {
   return (
     <div className="card">
@@ -58,6 +116,7 @@ root.render(
     <App />
   </React.StrictMode>
 );
+*/
 
 /*
 const pizzaData = [
