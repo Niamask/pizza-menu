@@ -2,6 +2,64 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+// Challange #1
+function App() {
+  return (
+    <div className="card">
+      <Avatar />
+      <div className="data">
+        <Intro />
+        <SkillList />
+      </div>
+    </div>
+  );
+}
+
+function Avatar() {
+  return <img className="avatar" src="avatar-image.jpg" alt="Niama" />;
+}
+
+function Intro() {
+  return (
+    <div>
+      <h1>Niama SK</h1>
+      <p>
+        Le Lorem Ipsum est simplement du faux texte employé dans la composition
+        et la mise en page avant impression.
+      </p>
+    </div>
+  );
+}
+
+function SkillList() {
+  return (
+    <div className="skill-list">
+      <Skill skill="React" emoji="💪🏻" color="green" />
+      <Skill skill="HTML + CSS" emoji="✌🏻" color="red" />
+      <Skill skill="JavaScript" emoji="🤌🏻" color="orange" />
+      <Skill skill="Flask" emoji="👍🏻" color="yellow" />
+    </div>
+  );
+}
+
+function Skill(props) {
+  return (
+    <div className="skill" style={{ backgroundColor: props.color }}>
+      <span>{props.skill}</span>
+      <span>{props.emoji}</span>
+    </div>
+  );
+}
+
+// React v18
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+/*
 const pizzaData = [
   {
     name: "Focaccia",
@@ -125,3 +183,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
+*/
