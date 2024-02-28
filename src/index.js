@@ -2,122 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-// Challange #1
-
-function App() {
-  return (
-    <div className="card">
-      <Avatar />
-      <div className="data">
-        <Intro />
-        <SkillList />
-      </div>
-    </div>
-  );
-}
-
-function Avatar() {
-  return <img className="avatar" src="avatar-image.jpg" alt="Name avatar" />;
-}
-
-function Intro() {
-  return (
-    <div>
-      <h1>Niama sk</h1>
-      <p>
-        The flex-wrap CSS property sets whether flex items are forced onto one
-        line or can wrap onto multiple lines.
-      </p>
-    </div>
-  );
-}
-
-function SkillList() {
-  return (
-    <div className="skill-list">
-      <Skill skill="React" emoji="👍🏻" color="red" />
-      <Skill skill="Css + HTML" emoji="👍🏻" color="green" />
-      <Skill skill="javaScript" emoji="👍🏻" color="yellow" />
-      <Skill skill="Flask" emoji="👍🏻" color="pink" />
-    </div>
-  );
-}
-
-function Skill(props) {
-  return (
-    <div className="skill" style={{ backgroundColor: props.color }}>
-      <span>{props.skill}</span>
-      <span>{props.emoji}</span>
-    </div>
-  );
-}
-// React v18
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-/*
-// Challange #1
-function App() {
-  return (
-    <div className="card">
-      <Avatar />
-      <div className="data">
-        <Intro />
-        <SkillList />
-      </div>
-    </div>
-  );
-}
-
-function Avatar() {
-  return <img className="avatar" src="avatar-image.jpg" alt="Niama" />;
-}
-
-function Intro() {
-  return (
-    <div>
-      <h1>Niama SK</h1>
-      <p>
-        Le Lorem Ipsum est simplement du faux texte employé dans la composition
-        et la mise en page avant impression.
-      </p>
-    </div>
-  );
-}
-
-function SkillList() {
-  return (
-    <div className="skill-list">
-      <Skill skill="React" emoji="💪🏻" color="green" />
-      <Skill skill="HTML + CSS" emoji="✌🏻" color="red" />
-      <Skill skill="JavaScript" emoji="🤌🏻" color="orange" />
-      <Skill skill="Flask" emoji="👍🏻" color="yellow" />
-    </div>
-  );
-}
-
-function Skill(props) {
-  return (
-    <div className="skill" style={{ backgroundColor: props.color }}>
-      <span>{props.skill}</span>
-      <span>{props.emoji}</span>
-    </div>
-  );
-}
-
-// React v18
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-*/
-
 /*
 const pizzaData = [
   {
@@ -184,9 +68,32 @@ function Header() {
   );
 }
 function Menu() {
+  const pizzas = [pizzaData];
+  const numPizzas = pizzas.length;
   return (
+    // const pizzaD=pizzaData
+
     <main className="menu">
       <h2>Our menu</h2>
+
+      {numPizzas > 0 ? (
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+
+          <ul className="pizzas">
+            {pizzaData.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>we're still working on our menu</p>
+      )}
+
+      
       <Pizza
         name="Pizza Spinaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
@@ -200,25 +107,31 @@ function Menu() {
         photoName="pizzas/funghi.jpg"
         price={12}
       />
+      
+
     </main>
   );
 }
 
-function Pizza(props) {
-  console.log(props);
+function Pizza({ pizzaObj }) {
+  console.log(pizzaObj);
+
+  // if (pizzaObj.soldOut) return null;
+
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name}></img>
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name}></img>
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
-function Footer() {
+function Footer(props) {
+  console.log(props);
   const hour = new Date().getHours();
   console.log(hour);
   const openHour = 12;
@@ -230,8 +143,27 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We are currently open
+      {/* {new Date().toLocaleTimeString()}. We are currently open 
+      {isOpen ? (
+        <Order closeHours={closeHour} openHours={openHour} />
+      ) : (
+        <p>
+          We're open between {openHour}:00 and {closeHour}:00.
+        </p>
+      )}
     </footer>
+  );
+}
+
+function Order({ closeHours, openHours }) {
+  return (
+    <div className="order">
+      <p>
+        We're open from {openHours}:00 to {closeHours}:00 come visite us or
+        order online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
@@ -243,3 +175,61 @@ root.render(
   </React.StrictMode>
 );
 */
+
+// Challange #1
+
+function App() {
+  return (
+    <div className="card">
+      <Avatar />
+      <div className="data">
+        <Intro />
+        <SkillList />
+      </div>
+    </div>
+  );
+}
+
+function Avatar() {
+  return <img className="avatar" src="avatar-image.jpg" alt="Niama" />;
+}
+
+function Intro() {
+  return (
+    <div>
+      <h1>Niama SK</h1>
+      <p>
+        Le Lorem Ipsum est simplement du faux texte employé dans la composition
+        et la mise en page avant impression.
+      </p>
+    </div>
+  );
+}
+
+function SkillList() {
+  return (
+    <div className="skill-list">
+      <Skill skill="React" emoji="💪🏻" color="green" />
+      <Skill skill="HTML + CSS" emoji="✌🏻" color="red" />
+      <Skill skill="JavaScript" emoji="🤌🏻" color="orange" />
+      <Skill skill="Flask" emoji="👍🏻" color="yellow" />
+    </div>
+  );
+}
+
+function Skill(props) {
+  return (
+    <div className="skill" style={{ backgroundColor: props.color }}>
+      <span>{props.skill}</span>
+      <span>{props.emoji}</span>
+    </div>
+  );
+}
+
+// React v18
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
