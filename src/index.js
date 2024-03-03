@@ -177,6 +177,38 @@ root.render(
 */
 
 // Challange #1
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advance",
+    color: "green",
+  },
+  {
+    skill: "JavaScript",
+    level: "advance",
+    color: "red",
+  },
+  {
+    skill: "Web Designe",
+    level: "advance",
+    color: "orange",
+  },
+  {
+    skill: "React",
+    level: "advance",
+    color: "pink",
+  },
+  {
+    skill: "Git and github",
+    level: "intermediate",
+    color: "yellow",
+  },
+  {
+    skill: "Flask",
+    level: "beginner",
+    color: "purple",
+  },
+];
 
 function App() {
   return (
@@ -207,21 +239,36 @@ function Intro() {
 }
 
 function SkillList() {
+  console.log(skills);
+
   return (
     <div className="skill-list">
-      <Skill skill="React" emoji="💪🏻" color="green" />
+      {/* <Skill skill="React" emoji="💪🏻" color="green" />
       <Skill skill="HTML + CSS" emoji="✌🏻" color="red" />
       <Skill skill="JavaScript" emoji="🤌🏻" color="orange" />
-      <Skill skill="Flask" emoji="👍🏻" color="yellow" />
+      <Skill skill="Flask" emoji="👍🏻" color="yellow" /> */}
+      {skills.map((sk) => (
+        <Skill skillObj={sk} key={sk.skill} />
+        // <Skill skill={sk.skill} color={sk.color} ghfhgf="gfhgf" />
+      ))}
     </div>
   );
 }
 
-function Skill(props) {
+function Skill({ skillObj }) {
+  //console.log({ skillObj });
+  console.log({ skillObj });
+
   return (
-    <div className="skill" style={{ backgroundColor: props.color }}>
-      <span>{props.skill}</span>
-      <span>{props.emoji}</span>
+    <div className="skill" style={{ backgroundColor: skillObj.color }}>
+      <span>{skillObj.skill}</span>
+      <span>
+        {skillObj.level === "beginner"
+          ? "👶🏻"
+          : skillObj.level === "intermediate"
+          ? "👍🏻"
+          : "💪🏻"}
+      </span>
     </div>
   );
 }
