@@ -228,3 +228,15 @@ p {
 span {
   font-weight: 900;
 }
+
+.two-card {
+  display: flex;
+}
+
+.avatar1 {
+  border-radius: 50%;
+}
+
+.test {
+  padding: 2rem;
+}
