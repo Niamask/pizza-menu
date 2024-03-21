@@ -211,7 +211,7 @@ p {
 }
 
 .skill-list {
-  width: 250px;
+  width: 350px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -227,16 +227,4 @@ p {
 
 span {
   font-weight: 900;
-}
-
-.two-card {
-  display: flex;
-}
-
-.avatar1 {
-  border-radius: 50%;
-}
-
-.test {
-  padding: 2rem;
 }
